@@ -15,7 +15,35 @@ class GraphMLUtil:
         
         # extract file name of the pgn file -> to be used as the file name for the generated gml file
         self.pgnFileName=os.path.splitext(os.path.basename(path))[0]
-    
+
+    def generateGamesNetwork(self, path):
+        '''
+        Takes path of pgn file as input.
+        Loops through all the games in the PGN:
+            - iteratively creating FENs for each of the position in these game
+            - and creates networkx graph objects with FENs as nodes
+            - draws a directed edge between prev and curr nodes
+        Returns networkx graph object
+        '''
+        # extract file name of the pgn file -> to be used as 
+        # the file name for the generated gml file
+        self.pgnFileName=os.path.splitext(os.path.basename(path))[0]
+        pgn=open(path)
+        
+        game=chess.pgn.read_game(pgn)
+        diGraph=nx.DiGraph()
+        while game:
+            prev=game.board().fen()
+            diGraph.add_node(prev)
+            while game.next():
+                game=game.next()
+                curr=game.board().fen()
+                diGraph.add_node(curr)
+                diGraph.add_edge(prev, curr)
+                prev=curr
+            game=chess.pgn.read_game(pgn)
+        return diGraph
+
     def generateGameNetwork(self, graphType='DiGraph'):
         '''
         generates a graph for the loaded game PGN
