@@ -27,7 +27,7 @@ python-chess-network is a library for the study of the game of chess as a large 
   - individual board positions represented by FENs are nodes in the graph
   - a directed edge between 2 nodes represents a move in the game of chess.
   ```python
-  import gml
+  import gml # assumes you have gml.py in the same directory, or you know how to handle python modules.
 
   input_pgn_file='pgn-base/immortal-game.pgn'
   gmlCoverter=gml.GraphMLUtil()
