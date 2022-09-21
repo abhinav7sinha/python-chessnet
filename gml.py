@@ -10,7 +10,7 @@ class GraphMLUtil:
         takes path of pgn file as input
         loads python-chess game object in self.singleGame
         '''
-        singlePgn = open("pgn-base/lichess-opera-game.pgn")
+        singlePgn = open(path)
         self.singleGame = chess.pgn.read_game(singlePgn)
         
         # extract file name of the pgn file -> to be used as the file name for the generated gml file
