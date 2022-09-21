@@ -23,9 +23,9 @@ python-chess-network is a library for the study of the game of chess as a large 
 
 ## 3. Features<a name="features"/>
 
-* provides a utility to generate a graph (unweighted and directed) from a PGN file
+* provides a utility to generate a graph (unweighted and directed) from a PGN file containing games of chess
   - individual board positions represented by FENs are nodes in the graph
-  - a directed edge between 2 nodes represents a move in the game of chess.
+  - a move in the game is represented by a directed edge between 2 nodes.
   ```python
   import gml # assumes you have gml.py in the same directory, or you know how to handle python modules.
 
