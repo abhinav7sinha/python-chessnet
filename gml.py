@@ -15,10 +15,11 @@ class GraphMLUtil:
         
         # extract file name of the pgn file -> to be used as the file name for the generated gml file
         self.pgnFileName=os.path.splitext(os.path.basename(path))[0]
-
-    def generateGameGml(self, graphType='DiGraph', dest='gml-base'):
+    
+    def generateGameNetwork(self, graphType='DiGraph'):
         '''
-        generates graphML file and saves it in dest folder with name self.pgnFileName
+        generates a graph for the loaded game PGN
+        returns a networkx graph object
         '''
         if graphType=='DiGraph':
             diGraph=nx.DiGraph()
@@ -31,11 +32,17 @@ class GraphMLUtil:
                 diGraph.add_node(curr)
                 diGraph.add_edge(prev, curr)
                 prev=curr
+        return diGraph        
 
-            # create GraphML file
-            if dest=='gml-base':
-                # if dest is not specified -> store gml file in default dir with default filename
-                path=os.path.join(dest, self.pgnFileName+'.gml')
-                nx.write_gml(diGraph, path)
-            else:
-                nx.write_gml(diGraph, dest)
+    def generateGameGml(self, graph, dest='gml-base'):
+        '''
+        takes networkx graph object as input
+        generates graphML file and saves it in dest folder with name self.pgnFileName
+        '''
+        # create GraphML file
+        if dest=='gml-base':
+            # if dest is not specified -> store gml file in default dir with default filename
+            path=os.path.join(dest, self.pgnFileName+'.gml')
+            nx.write_gml(graph, path)
+        else:
+            nx.write_gml(graph, dest)
