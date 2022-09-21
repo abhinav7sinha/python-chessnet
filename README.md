@@ -2,13 +2,13 @@
 Model the game of chess as a large complex network
 
 1. [Introduction](#introduction)
-2. [Installation](#installation)
+2. [Dependencies](#dependencies)
 3. [Features](#features)
 
 ## 1. Introduction<a name="introduction"/>
 python-chess-network is a library for the study of the game of chess as a large complex network.
 
-## 2. Installation<a name="installation"/>
+## 2. Dependencies<a name="dependencies"/>
 
 * Python3 - [Download and Install Python3](https://www.python.org/downloads/). You can also use your system's package manager to install the latest stable version of python3.
 * Now Install the following packages:</br>
