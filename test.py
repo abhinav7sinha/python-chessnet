@@ -1,13 +1,10 @@
 import gml
 
-input_pgn_file='pgn-base/immortal-game.pgn'
+input_pgn_file='pgn-base/carlsen-caruana-2018.pgn'
 gmlCoverter=gml.GraphMLUtil()
 
-# load pgn file
-gmlCoverter.loadSinglePgnFile(input_pgn_file)
-
-# generate graph object from the loaded pgn
-diGraph=gmlCoverter.generateGameNetwork()
+# generate graph object from pgn file
+diGraph=gmlCoverter.generateGamesNetwork(input_pgn_file)
 
 # generate graphml file from the graph object
 gmlCoverter.generateGameGml(diGraph)
