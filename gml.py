@@ -5,17 +5,6 @@ import chess.pgn
 import networkx as nx
 
 class GraphMLUtil:
-    def loadSinglePgnFile(self, path):
-        '''
-        takes path of pgn file as input
-        loads python-chess game object in self.singleGame
-        '''
-        singlePgn = open(path)
-        self.singleGame = chess.pgn.read_game(singlePgn)
-        
-        # extract file name of the pgn file -> to be used as the file name for the generated gml file
-        self.pgnFileName=os.path.splitext(os.path.basename(path))[0]
-
     def generateGamesNetwork(self, path):
         '''
         Takes path of pgn file as input.
@@ -42,25 +31,7 @@ class GraphMLUtil:
                 diGraph.add_edge(prev, curr)
                 prev=curr
             game=chess.pgn.read_game(pgn)
-        return diGraph
-
-    def generateGameNetwork(self, graphType='DiGraph'):
-        '''
-        generates a graph for the loaded game PGN
-        returns a networkx graph object
-        '''
-        if graphType=='DiGraph':
-            diGraph=nx.DiGraph()
-            game=self.singleGame
-            prev=game.board().fen()
-            diGraph.add_node(prev)
-            while game.next():
-                game=game.next()
-                curr=game.board().fen()
-                diGraph.add_node(curr)
-                diGraph.add_edge(prev, curr)
-                prev=curr
-        return diGraph        
+        return diGraph       
 
     def generateGameGml(self, graph, dest='gml-base'):
         '''
