@@ -1,4 +1,4 @@
-# python-chess-network
+# python-chessnet
 Model the game of chess as a large complex network
 
 1. [Introduction](#introduction)
@@ -36,5 +36,8 @@ python-chess-network is a library for the study of the game of chess as a large 
   diGraph=gmlCoverter.generateGamesNetwork(input_pgn_file)
 
   # generate graphml file from the graph object
-  gmlCoverter.generateGameGml(diGraph)
+  # (if no destination is provided - file is stored in gml-base directory 
+  # with default file name)
+  dest='gml-base/test-output.gml'
+  gmlCoverter.generateGameGml(diGraph, dest)
   ```
