@@ -1,4 +1,4 @@
-# python-chess-network
+# python-chessnet
 Model the game of chess as a large complex network
 
 1. [Introduction](#introduction)

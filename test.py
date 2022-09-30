@@ -7,4 +7,6 @@ gmlCoverter=gml.GraphMLUtil()
 diGraph=gmlCoverter.generateGamesNetwork(input_pgn_file)
 
 # generate graphml file from the graph object
-gmlCoverter.generateGameGml(diGraph)
+# gmlCoverter.generateGameGml(diGraph)
+dest='gml-base/test-output.gml'
+gmlCoverter.generateGameGml(diGraph, dest)
